@@ -69,7 +69,13 @@ function App() {
           </p>
 
           {/* Todo: Output <ul> list of validation errors here! */}
-
+          {formState.errors && (
+              <ul id="errors">
+                {formState.errors.map((error, index) => (
+                    <li key={index}>{error}</li>
+                ))}
+              </ul>
+          )}
           <p className="actions">
             <SubmitButton/>
           </p>
@@ -78,13 +84,6 @@ function App() {
           <h2>Your Submissions</h2>
           {optimisticSubmissions.length === 0 && (
               <p>No feedback submitted yet.</p>
-          )}
-          {formState.errors && (
-              <ul id="errors">
-                {formState.errors.map((error, index) => (
-                    <li key={index}>{error}</li>
-                ))}
-              </ul>
           )}
           {optimisticSubmissions.length > 0 && (
               <ul>

@@ -45,7 +45,7 @@ form {
 }
 
 form p {
-  margin: 0; 
+  margin: 0;
 }
 
 form label {
@@ -88,7 +88,7 @@ form textarea {
 }
 
 .actions button:disabled,
-.actions button:disabled:hover{
+.actions button:disabled:hover {
   background: #8e8e91;
   cursor: not-allowed;
 }
@@ -135,6 +135,8 @@ form textarea {
   margin: 0;
 }
 
-.error{
-  color: #b40202;
+#errors {
+  li {
+    color: #b40202;
+  }
 }
