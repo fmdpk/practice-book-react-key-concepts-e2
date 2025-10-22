@@ -1,7 +1,7 @@
-import {lazy, useCallback, useState} from 'react';
+import {lazy, Suspense, useCallback, useState} from 'react';
 
 const Signup = lazy(() => import(
-    './components/Authentication/Signup.jsx'
+    './Signup/Signup.jsx'
     )
 );
 
@@ -11,9 +11,9 @@ import classes from './Authentication.module.css';
 function Authentication() {
   const [mode, setMode] = useState('login');
 
-  const handleSwitchAuthMode = useCallback(() => {
+  const handleSwitchAuthMode = () => {
     setMode((prevMode) => (prevMode === 'login' ? 'signup' : 'login'));
-  }, [])
+  }
 
   let authElement = <Login />;
   let switchBtnCaption = 'Create a new account';
@@ -26,7 +26,7 @@ function Authentication() {
   return (
     <div className={classes.auth}>
       <h1>You must authenticate yourself first!</h1>
-      {authElement}
+      <Suspense fallback={<p>Loading...</p>}>{authElement}</Suspense>
       <button className={classes.btn} onClick={handleSwitchAuthMode}>{switchBtnCaption}</button>
     </div>
   );

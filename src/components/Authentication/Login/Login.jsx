@@ -1,4 +1,4 @@
-import {lazy, useCallback, useState} from 'react';
+import {lazy, Suspense, useCallback, useState} from 'react';
 
 const ResetPassword = lazy(() => import(
     './ResetPassword.jsx'
@@ -36,7 +36,9 @@ function Login() {
       <button className="alt-btn" onClick={handleStartResetPassword}>
         Reset password
       </button>
-      {isResetting && <ResetPassword onFinish={handleFinishResetPassword} />}
+      <Suspense fallback={<p>Loading...</p>}>
+        {isResetting && <ResetPassword onFinish={handleFinishResetPassword} />}
+      </Suspense>
     </>
   );
 }
