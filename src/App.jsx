@@ -7,7 +7,9 @@ function App() {
   const [showDateCalc, setShowDateCalc] = useState(false);
 
   function handleOpenDateCalc() {
-    setShowDateCalc((true));
+    setShowDateCalc((prevState) => {
+      return !prevState
+    });
   }
 
   return (
