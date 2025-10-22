@@ -1,15 +1,19 @@
-import { useState } from 'react';
+import {lazy, useCallback, useState} from 'react';
+
+const Signup = lazy(() => import(
+    './components/Authentication/Signup.jsx'
+    )
+);
 
 import Login from './Login/Login.jsx';
-import Signup from './Signup/Signup.jsx';
 import classes from './Authentication.module.css';
 
 function Authentication() {
   const [mode, setMode] = useState('login');
 
-  function handleSwitchAuthMode() {
+  const handleSwitchAuthMode = useCallback(() => {
     setMode((prevMode) => (prevMode === 'login' ? 'signup' : 'login'));
-  }
+  }, [])
 
   let authElement = <Login />;
   let switchBtnCaption = 'Create a new account';

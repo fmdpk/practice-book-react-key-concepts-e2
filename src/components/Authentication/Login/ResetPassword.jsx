@@ -1,6 +1,7 @@
 import { createPortal } from 'react-dom';
 
 import classes from './ResetPassword.module.css';
+import {memo} from "react";
 
 function ResetPassword({ onFinish }) {
   return createPortal(
@@ -24,4 +25,4 @@ function ResetPassword({ onFinish }) {
   );
 }
 
-export default ResetPassword;
+export default memo(ResetPassword);

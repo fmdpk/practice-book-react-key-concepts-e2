@@ -1,20 +1,23 @@
-import { useState } from 'react';
+import {lazy, useCallback, useState} from 'react';
 
-import ResetPassword from './ResetPassword.jsx';
+const ResetPassword = lazy(() => import(
+    './ResetPassword.jsx'
+    )
+);
 
 function Login() {
-  const [isResetting, setIsResetting] = useState();
+  const [isResetting, setIsResetting] = useState(false);
 
   function handleLogin(event) {
     event.preventDefault();
   }
 
+  const handleFinishResetPassword = useCallback(() => {
+    setIsResetting(false);
+  }, [])
+
   function handleStartResetPassword() {
     setIsResetting(true);
-  }
-
-  function handleFinishResetPassword() {
-    setIsResetting(false);
   }
 
   return (

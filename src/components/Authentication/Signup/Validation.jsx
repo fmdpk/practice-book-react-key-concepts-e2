@@ -1,6 +1,7 @@
 import { FaCheck } from 'react-icons/fa';
 
 import classes from './Validation.module.css';
+import {memo} from "react";
 
 const numberRegex = /\d/;
 const specCharsRegex = /[ `!@#$%^&*()_+\-={};':"\\|,.<>\/?~]/;
