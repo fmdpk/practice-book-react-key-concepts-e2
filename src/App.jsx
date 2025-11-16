@@ -28,15 +28,16 @@ const router = createBrowserRouter([
               'https://jsonplaceholder.typicode.com/posts/' + args.params.id
           );
 
-          let result = await response.json()
-          console.log(result)
+          // let result = await response.json()
+          // console.log(result)
 
           if(!response.ok)
           {
             throw new Error('Could not fetch post for id ' + args.params.id);
           }
 
-          return result;
+          // return result;
+          return response;
         },
         lazy: () => import('./routes/ProductsDetail.jsx')
       }
